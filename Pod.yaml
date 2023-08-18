@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: debug-toolbox-unprivileged
+  name: debug-toolbox-unprivileged
+  namespace: default
+spec:
+  containers:
+  - image: andrewdussstorable/debug-toolbox-unprivileged:latest
+    imagePullPolicy: Always
+    name: debug-toolbox-unprivileged
+    securityContext:
+      allowPrivilegeEscalation: false
+  securityContext: 
+    seccompProfile:
+      type: RuntimeDefault
+
